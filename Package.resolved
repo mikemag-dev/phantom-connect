@@ -2,20 +2,29 @@
   "object": {
     "pins": [
       {
+        "package": "Beet",
+        "repositoryURL": "https://github.com/metaplex-foundation/beet-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "e4708bf28b55ce42727006c1cb7882f069d07bd8",
+          "version": "1.0.7"
+        }
+      },
+      {
         "package": "secp256k1",
         "repositoryURL": "https://github.com/Boilertalk/secp256k1.swift.git",
         "state": {
           "branch": null,
-          "revision": "45e458ec3be46cf0a6eb68bc947f797852dc65d8",
-          "version": "0.1.6"
+          "revision": "cd187c632fb812fd93711a9f7e644adb7e5f97f0",
+          "version": "0.1.7"
         }
       },
       {
         "package": "Solana",
-        "repositoryURL": "https://github.com/ajamaica/Solana.Swift.git",
+        "repositoryURL": "https://github.com/mikemag-dev/Solana.Swift",
         "state": {
           "branch": "master",
-          "revision": "f487b256658634d7bdc178c6e6e7abf7fd905580",
+          "revision": "b255ad8c424615e24f270409c816182f493a9f91",
           "version": null
         }
       },
@@ -24,8 +33,8 @@
         "repositoryURL": "https://github.com/daltoniam/Starscream.git",
         "state": {
           "branch": null,
-          "revision": "df8d82047f6654d8e4b655d1b1525c64e1059d21",
-          "version": "4.0.4"
+          "revision": "c6bfd1af48efcc9a9ad203665db12375ba6b145a",
+          "version": "4.0.8"
         }
       },
       {
