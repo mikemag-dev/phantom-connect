@@ -11,7 +11,7 @@ import PhantomConnect
 
 struct ContentView: View {
     
-    @StateObject var viewModel = PhantomConnectViewModel()
+    @State var viewModel = PhantomConnectViewModel()
     
     @State var walletConnected = false
     @State var walletPublicKey: PublicKey?

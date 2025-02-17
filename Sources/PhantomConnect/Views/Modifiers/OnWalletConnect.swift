@@ -10,7 +10,7 @@ import Solana
 
 public typealias OnWalletConnectAction = (_ publicKey: PublicKey?, _ phantomEncryptionPublicKey: PublicKey?, _ session: String? ,_ error: Error?) -> Void
 
-@available(iOS 14.0, macOS 11, *)
+
 public struct OnWalletConnect: ViewModifier {
     
     // ============================================================
@@ -56,7 +56,7 @@ public struct OnWalletConnect: ViewModifier {
     
 }
 
-@available(iOS 14.0, *)
+
 extension View {
     
     public func onWalletConnect(

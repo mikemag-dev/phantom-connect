@@ -10,7 +10,7 @@ import Solana
 
 public typealias OnWalletDisconnectAction = (_ error: Error?) -> Void
 
-@available(iOS 14.0, macOS 11, *)
+
 public struct OnWalletDisconnect: ViewModifier {
     
     // ============================================================
@@ -54,7 +54,7 @@ public struct OnWalletDisconnect: ViewModifier {
     
 }
 
-@available(iOS 14.0, *)
+
 extension View {
     
     public func onWalletDisconnect(

@@ -8,7 +8,7 @@
 import Foundation
 import Solana
 
-@available(iOS 10.0, *)
+
 public class PhantomConnectService {
     
     // ============================================================

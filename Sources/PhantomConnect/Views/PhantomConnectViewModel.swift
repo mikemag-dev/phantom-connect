@@ -7,13 +7,11 @@
 
 import Foundation
 import Solana
-
-#if os(iOS)
+import SwiftUI
 import UIKit
-#endif
 
-@available(iOS 13.0, macOS 10.15, *)
-public class PhantomConnectViewModel: ObservableObject {
+@Observable
+public class PhantomConnectViewModel {
     
     // ============================================================
     // === Public API =============================================
@@ -48,9 +46,7 @@ public class PhantomConnectViewModel: ObservableObject {
             publicKey: linkingKeypair?.publicKey.data ?? Data()
         )
         
-#if os(iOS)
         UIApplication.shared.open(url)
-#endif
         
     }
     
@@ -81,9 +77,7 @@ public class PhantomConnectViewModel: ObservableObject {
             payload: encryptedPayload
         )
         
-#if os(iOS)
         UIApplication.shared.open(url)
-#endif
         
     }
     
@@ -121,9 +115,7 @@ public class PhantomConnectViewModel: ObservableObject {
             payload: encryptedPayload
         )
         
-#if os(iOS)
         UIApplication.shared.open(url)
-#endif
         
     }
     
