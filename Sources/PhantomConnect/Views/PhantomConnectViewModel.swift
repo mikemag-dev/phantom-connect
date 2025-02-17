@@ -21,8 +21,21 @@ public class PhantomConnectViewModel {
     
     // MARK: Public Properties
    
-    /// Initial keypair used for connecting with phantom. This property should only be counted on being present during the app session where connection was made, unless manually set.
-    public var linkingKeypair: BoxedKeypair?
+    public var getLinkingKeypair: (() -> BoxedKeypair?)? = nil
+    public var setLinkingKeypair: ((BoxedKeypair?) -> Void)? = nil
+    
+    // default storage of keypair in memory
+    private var _linkingKeypair: BoxedKeypair? = nil
+    public var linkingKeypair : BoxedKeypair? {
+        get { getLinkingKeypair?() ?? _linkingKeypair }
+        set {
+            if let setLinkingKeypair {
+                setLinkingKeypair(newValue)
+            } else {
+                _linkingKeypair = newValue
+            }
+        }
+    }
     
     /// Linking key pair public key used for shared secret. This property should only be counted on being present during the app session where connection was made, unless manually set.
     public var encryptionPublicKey: PublicKey {
@@ -37,13 +50,27 @@ public class PhantomConnectViewModel {
         self.phantomConnectService = phantomConnectService!
     }
     
+    /// Constructor
+    /// - Parameter phantomConnectService: Dependency injected service
+    public init(
+        phantomConnectService: PhantomConnectService? = PhantomConnectService(),
+        getLinkingKeypair: @escaping () -> BoxedKeypair?,
+        setLinkingKeypair: @escaping (BoxedKeypair?) -> Void
+    ) {
+        self.phantomConnectService = phantomConnectService!
+        self.getLinkingKeypair = getLinkingKeypair
+        self.setLinkingKeypair = setLinkingKeypair
+    }
+    
     /// This method kicks the app over to the  phantom app via a universal link created in the `PhantomConnectService`
     public func connectWallet() throws {
         
-        linkingKeypair = try SolanaUtils.generateBoxedKeypair()
+        if linkingKeypair == nil {
+            linkingKeypair = try SolanaUtils.generateBoxedKeypair()
+        }
     
         let url = try phantomConnectService.connect(
-            publicKey: linkingKeypair?.publicKey.data ?? Data()
+            publicKey: linkingKeypair!.publicKey.data
         )
         
         UIApplication.shared.open(url)

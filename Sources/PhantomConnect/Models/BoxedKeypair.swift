@@ -8,7 +8,7 @@
 import Foundation
 import Solana
 
-public struct BoxedKeypair {
+public struct BoxedKeypair: Codable {
     
     // ============================================================
     // === Public API =============================================
@@ -23,5 +23,10 @@ public struct BoxedKeypair {
     
     /// 32 byte secret key
     public let secretKey: Data
+    
+    public init(publicKey: PublicKey, secretKey: Data) {
+        self.publicKey = publicKey
+        self.secretKey = secretKey
+    }
     
 }
